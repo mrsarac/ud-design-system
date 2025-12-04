@@ -1,0 +1,248 @@
+/**
+ * UD Design System - Global Styles
+ *
+ * CSS Custom Properties (Design Tokens)
+ * These can be consumed by any CSS-in-JS solution or vanilla CSS
+ */
+
+:root {
+  /* Fonts */
+  --ud-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ud-font-mono: 'Fira Code', 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+
+  /* Dark theme (default) */
+  --ud-background: #0F0F0F;
+  --ud-surface: #1A1A1A;
+  --ud-surface-hover: #2A2A2A;
+  --ud-surface-active: #444444;
+
+  --ud-text: #FFFFFF;
+  --ud-text-secondary: #CCCCCC;
+  --ud-text-muted: #999999;
+  --ud-text-disabled: #666666;
+
+  --ud-accent: #32C8CA;
+  --ud-accent-hover: #2AB5B9;
+  --ud-accent-active: #1B898D;
+  --ud-accent-text: #0F0F0F;
+
+  --ud-border: #2A2A2A;
+  --ud-border-subtle: #1A1A1A;
+  --ud-border-focus: #32C8CA;
+
+  --ud-focus: #32C8CA;
+  --ud-focus-ring: rgba(50, 200, 202, 0.3);
+
+  --ud-error: #E63946;
+  --ud-error-subtle: rgba(230, 57, 70, 0.15);
+  --ud-error-text: #FF6B6B;
+
+  --ud-warning: #F4A261;
+  --ud-warning-subtle: rgba(244, 162, 97, 0.15);
+  --ud-warning-text: #FFD93D;
+
+  --ud-success: #52B788;
+  --ud-success-subtle: rgba(82, 183, 136, 0.15);
+  --ud-success-text: #52B788;
+
+  --ud-selection: rgba(50, 200, 202, 0.2);
+  --ud-overlay: rgba(15, 15, 15, 0.8);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --ud-background: #FFFFFF;
+  --ud-surface: #F5F5F5;
+  --ud-surface-hover: #EEEEEE;
+  --ud-surface-active: #E0E0E0;
+
+  --ud-text: #0F0F0F;
+  --ud-text-secondary: #444444;
+  --ud-text-muted: #666666;
+  --ud-text-disabled: #999999;
+
+  --ud-accent: #2AB5B9;
+  --ud-accent-hover: #239FA3;
+  --ud-accent-active: #1B898D;
+  --ud-accent-text: #FFFFFF;
+
+  --ud-border: #E0E0E0;
+  --ud-border-subtle: #EEEEEE;
+  --ud-border-focus: #2AB5B9;
+
+  --ud-focus: #2AB5B9;
+  --ud-focus-ring: rgba(42, 181, 185, 0.3);
+
+  --ud-error: #D62828;
+  --ud-error-subtle: rgba(214, 40, 40, 0.1);
+  --ud-error-text: #D62828;
+
+  --ud-warning: #E76F51;
+  --ud-warning-subtle: rgba(231, 111, 81, 0.1);
+  --ud-warning-text: #E76F51;
+
+  --ud-success: #2D6A4F;
+  --ud-success-subtle: rgba(45, 106, 79, 0.1);
+  --ud-success-text: #2D6A4F;
+
+  --ud-selection: rgba(50, 200, 202, 0.15);
+  --ud-overlay: rgba(255, 255, 255, 0.8);
+}
+
+/* Base reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--ud-font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--ud-background);
+  color: var(--ud-text);
+  min-height: 100vh;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--ud-selection);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--ud-focus);
+  outline-offset: 2px;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ud-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ud-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ud-text-muted);
+}
+
+/* Animations */
+@keyframes ud-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ud-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ud-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ud-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility classes */
+.ud-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Interactive states for components */
+.ud-button:hover:not(:disabled),
+.ud-icon-button:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.ud-button:active:not(:disabled),
+.ud-icon-button:active:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.ud-button:focus-visible,
+.ud-icon-button:focus-visible,
+.ud-input:focus-visible,
+.ud-textarea:focus-visible,
+.ud-select:focus-visible {
+  box-shadow: 0 0 0 3px var(--ud-focus-ring);
+  border-color: var(--ud-border-focus);
+}
+
+.ud-surface--interactive:hover {
+  background: var(--ud-surface-hover);
+}
+
+.ud-surface--interactive:active {
+  background: var(--ud-surface-active);
+}
+
+/* Sidebar item hover */
+.ud-sidebar-item:hover:not(:disabled):not(.ud-sidebar-item--active) {
+  background: var(--ud-surface-hover);
+  color: var(--ud-text);
+}
+
+/* Tab hover */
+.ud-tabs-trigger:hover:not(:disabled):not(.ud-tabs-trigger--active) {
+  background: var(--ud-surface-hover);
+  color: var(--ud-text);
+}
+
+/* Panel resize handle hover */
+.ud-panel-resize-handle:hover {
+  background: var(--ud-accent) !important;
+}
+
+/* Close button hover */
+.ud-toast button:hover,
+.ud-dialog button[aria-label="Close dialog"]:hover {
+  background: var(--ud-surface-hover);
+  color: var(--ud-text);
+}
