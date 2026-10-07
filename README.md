@@ -132,4 +132,4 @@ flowchart LR
 
 ## License
 
-MIT, as declared in `package.json`. This repository does not yet contain a `LICENSE` file.
+MIT. See [LICENSE](LICENSE).
